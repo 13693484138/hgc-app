@@ -1,0 +1,47 @@
+<!--
+  Generated template for the RankingListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <!-- <ion-toolbar>
+    <button ion-button clear small navPop>
+      <ion-icon ios="ios-arrow-back">排行榜</ion-icon>
+    </button>
+    <ion-title>排行榜</ion-title>
+  </ion-toolbar> -->
+  <ion-navbar>
+    <ion-title>排行榜</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <img class='podium' src="assets/imgs/rink/podium.png" alt='排行榜' />
+    <ion-card-content>
+      <!-- <ion-card-title>
+        Nine Inch Nails Live
+      </ion-card-title> -->
+      <p>
+        The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
+      </p>
+    </ion-card-content>
+  </ion-card>
+  <ion-list>
+    <ion-item *ngFor="let list of lists">
+      <img *ngIf="list.imgshow" src="{{list.ranksrc}}" item-start alt="{{list.ranklist}}">
+      <span class='ranklist' item-start *ngIf="!list.imgshow">{{list.ranklist}}</span>
+      <div class='personal-information'>
+        <img src="{{list.portrait}}" alt="头像">
+        <div>
+          <p>{{list.name}}</p>
+          <p>{{list.address}}</p>
+        </div>
+      </div>
+      <span item-end>销量</span>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,50 @@
+page-ranking-list {
+    .podium{
+        width: rem(252);
+        height: rem(222);
+        margin: 0 auto;
+    }
+    .card-ios{
+        margin: rem(10) 0 rem(11);
+        width: 100%;
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+        padding-top: rem(33);
+    }
+    .list-ios{
+        margin: 0;
+    }
+    .scroll-content{
+        background: #eeeeee;
+    }
+    .list-ios>.item-block:first-child{
+        border-top: 0;
+    }
+    .list-ios .item-block .item-inner{
+        border-bottom: 0
+    }
+    .item-block {
+        border-bottom: 0.55px solid #c8c7cc;
+    }
+    ion-list{
+        ion-item{
+            &>img,.ranklist {
+                width: rem(60);
+                height: rem(77);
+            }
+            .personal-information{
+                display: flex;
+                img{
+                    margin-right: rem(25);
+                    width: rem(81);
+                    height: rem(81);
+                }
+                p:nth-child(1){
+                    font-size: rem(32);
+                }
+                p:nth-child(2) {
+                  font-size: rem(25);
+                }
+            }
+        }
+    }
+}

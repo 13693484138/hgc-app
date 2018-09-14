@@ -1,0 +1,21 @@
+page-inviting-members {
+    .fixed-content{
+        background: url("../assets/imgs/inviting/inviting-bg.png") no-repeat;
+        background-size: 100% 100%;
+    }
+    .scroll-content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        img:nth-child(1){
+            width: rem(420);
+            height: rem(287);
+            margin-top: rem(80);
+        }
+        img:nth-child(2) {
+        width: rem(419);
+        height: rem(709);
+        margin-top: rem(81);
+        }
+    }
+}

@@ -1,0 +1,54 @@
+page-information {
+    .scroll-content{
+        background: #eee;
+    }
+    .card-ios{
+        border-radius: 15px;
+    }
+    .infor {
+        div{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            span{
+                padding:rem(27);
+            }
+            span:nth-child(2){
+                color:#d2364e;
+            }
+        }
+    }
+    .time{
+        text-align: center;
+    }
+    .commodity{
+        display: flex;
+        padding: rem(20);
+        img{
+            width: rem(160);
+            height: rem(160);
+        }
+        &>div{
+            margin-left: rem(25);
+            display: flex;
+            flex-direction: column;
+            span,div{
+                flex:1;
+                &>span{
+                    color: #d2364e;
+                }
+            }
+        }
+    }
+    .notice{
+        padding: rem(20);
+        h2{
+            font-size: rem(28);
+            text-align: center;
+        }
+        p{
+            text-indent:2em;
+            font-size: rem(24);
+        }
+    }
+}

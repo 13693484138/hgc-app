@@ -1,0 +1,22 @@
+page-contact {
+    ion-content{
+        ion-list{
+            ion-item{
+                .boximg {
+                width: rem(146);
+                height: rem(50);
+                }
+
+                .headimg {
+                width: rem(145);
+                height: rem(145);
+                }
+                div{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+            }
+        }
+    }
+}

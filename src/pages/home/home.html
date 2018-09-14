@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>医保城市导购</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class='home-top'>
+    <div class='home-cotent'>
+      <div class='home-content-left'>
+        <img src="assets/imgs/head.png" alt="头像">
+        <div>
+          <p>正生锦泰蜀汉店</p>
+          <p>良辰美景奈何天</p>
+        </div>
+      </div>
+      <div class='home-content-right'>
+        <img src="assets/imgs/qrcode.png" alt="二维码">
+      </div>
+    </div>
+  </div>
+  <div class='home-content-container'>
+    <ion-card class='home-commission'>
+      <img src="assets/imgs/range.png" alt="排名">
+      <ion-card-header>
+        <div class='home-commission-title'>
+          <span>本月佣金(元)</span>
+          <span>188.8</span>
+        </div>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- Add card content here! -->
+        <div>
+          <p>50</p>
+          <p>钱包余额</p>
+        </div>
+        <div>
+          <p>60</p>
+          <p>预期收益</p>
+        </div>
+        <div>
+          <p>1024</p>
+          <p>顾客数量</p>
+        </div>
+        <div>
+          <p>2000</p>
+          <p>新增顾客</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <ion-card class='home-notice'>
+      <ion-card-content>
+        <!-- Add card content here! -->
+        <img src="assets/imgs/notice.png" alt="通知"> 今日任务:完成10单，补助50元
+      </ion-card-content>
+    </ion-card>
+    <ion-card class='home-bottom'>
+      <ion-card-content>
+        <div (click)="turnTo('MyCommissionPage')">
+          <img src="assets/imgs/myCommission.png" alt="我的佣金">
+          <span>我的佣金</span>
+        </div>
+        <div (click)="turnTo('TeamPerformancePage')">
+          <img src="assets/imgs/teamPerformance.png" alt="团队业绩">
+          <span>团队业绩</span>
+        </div>
+        <div>
+          <img src="assets/imgs/data.png" alt="数据分析">
+          <span>数据分析</span>
+        </div>
+        <div (click)="turnTo('InvitingMembersPage')">
+          <img src="assets/imgs/vip.png" alt="邀请会员">
+          <span>邀请会员</span>
+        </div>
+        <div>
+          <img src="assets/imgs/order.png" alt="顾客订单">
+          <span>顾客订单</span>
+        </div>
+        <div (click)="turnTo('RankingListPage')">
+          <img src="assets/imgs/rinkingList.png" alt="排行榜">
+          <span>排行榜</span>
+        </div>
+        <div>
+          <img src="assets/imgs/task.png" alt="最新任务">
+          <span>最新任务</span>
+        </div>
+        <div>
+          <img src="assets/imgs/newspaper.png" alt="活动战报">
+          <span>活动战报</span>
+        </div>
+        <div>
+          <img src="assets/imgs/putForward.png" alt="提现">
+          <span>提现</span>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

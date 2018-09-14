@@ -1,0 +1,79 @@
+page-my-commission {
+    ion-navbar{
+        a {
+          position: absolute;
+          right: rem(30);
+          top: 0;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          color: #d2364e;
+          font-size: rem(30);
+        }
+    }
+    .cash-content-container{
+        background: #d2364e;
+        color: #fff;
+        .cash-content-top{
+            padding: rem(20) 0 0 rem(33);
+            span{
+                font-size: rem(24);
+            }
+        }
+        .cash-content-bottom{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: rem(51);
+            p:nth-child(1){
+                font-size: rem(60);
+                margin: rem(58) 0 rem(20);
+            }
+            p:nth-child(2){
+                font-size: rem(22);
+                margin: 0;
+            }
+        }
+    }
+    ion-grid {
+      ion-row {
+        ion-col {
+          p:nth-child(1){
+            text-align: center;
+            color: #d2364e;
+            margin: rem(10) 0 0 0;
+          }
+          p:nth-child(2) {
+            text-align: center;
+            color: #d2364e;
+            margin: rem(10) 0 rem(10);
+          }
+        }
+      }
+    }
+    ion-item-group{
+        .item-ios.item-block .item-inner{
+            border-bottom:0;
+        }
+        .item-block {
+            border-bottom:1px solid #eeeeee;
+        }
+        .already-paid {
+            color:#d2364e;
+        }
+        .pre-income{
+            color: #feb900;
+        }
+        .refunded{
+            color:#19b6f1;
+        }
+        ion-item{
+            span:nth-child(1),
+            span.already-paid,
+            span.pre-income,
+            span.refunded {
+                font-size: rem(28);
+            }
+        }
+    }
+}

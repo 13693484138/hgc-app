@@ -1,0 +1,84 @@
+page-team-performance {
+    .scroll-content{
+        background: #eeeeee;
+    }
+    .list-header-ios{
+        background:#fff;
+    }
+    .list-ios .item-block .item-inner{
+        border-bottom:0;
+    }
+    .item-ios [item-right],
+    .item-ios [item-end]{
+        margin: 0;
+    }
+    // .item-ios [item-left],
+    // .item-ios [item-start]{
+    //     margin: 5px 16px 8px 0
+    // }
+    .contaier-top{
+        background: #fff;
+        margin-bottom: rem(19);
+        .contaier-top-title{
+            padding-top: rem(30);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img{
+                width: rem(29);
+                height: rem(28);
+            }
+        }
+        .contaier-top-content{
+            display: flex;
+            justify-content:space-around;
+            align-items: center;
+            div:nth-child(1),
+            div:nth-child(3) {
+                p:nth-child(1){
+                    color: #d2364e;
+                    font-size: rem(38);
+                    margin: rem(30) 0 0 0;
+                }
+                p:nth-child(2) {
+                  color: #666666;
+                  font-size: rem(24);
+                  margin: rem(22) 0 rem(40);
+                }
+            }
+            div:nth-child(2){
+                height: rem(50);
+                border-left: rem(1) solid #eeeeee;
+                border-right: rem(1) solid #eeeeee;
+            }
+        }
+    }
+   
+    .list-ios {
+      margin: 0;
+    }
+    .item-block {
+      border-bottom: 1px solid #eee;
+    }
+    .team-list-first {
+      margin: 0 0 rem(30) 0;
+    }
+    ion-item{
+        .head {
+            width: rem(80);
+            height: rem(80);
+        }
+        .rank{
+            width: rem(45);
+            height: rem(57);
+        }
+    }
+    .show-head-more,
+    .show-rank-more{
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: rem(70);
+    }
+}
