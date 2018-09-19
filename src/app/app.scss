@@ -5,6 +5,15 @@
 .button-inner {
   color: #343434;
 }
+.tabs-ios .tabbar,.header-ios .toolbar-background-ios, .footer-ios .toolbar-background-ios{
+    background-color:#fff ;
+}
+.tabs-ios .tab-button[aria-selected=true] .tab-button-icon,
+.tabs-ios .tab-button[aria-selected=true],.tabs-ios .tab-button:hover:not(.disable-hover), 
+{
+    color:#d2364e;
+    
+}
 
 // App Global Sass
 // --------------------------------------------------

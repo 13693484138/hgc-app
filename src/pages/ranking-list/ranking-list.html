@@ -22,26 +22,23 @@
   <ion-card>
     <img class='podium' src="assets/imgs/rink/podium.png" alt='排行榜' />
     <ion-card-content>
-      <!-- <ion-card-title>
-        Nine Inch Nails Live
-      </ion-card-title> -->
-      <p>
-        The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
+      <p class='text_zq'>
+        {{description}}
       </p>
     </ion-card-content>
   </ion-card>
   <ion-list>
-    <ion-item *ngFor="let list of lists">
-      <img *ngIf="list.imgshow" src="{{list.ranksrc}}" item-start alt="{{list.ranklist}}">
-      <span class='ranklist' item-start *ngIf="!list.imgshow">{{list.ranklist}}</span>
+    <ion-item *ngFor="let list of lists;let i=index">
+      <img *ngIf="i<3" src="{{i == 0 ? theFirst : i == 1 ? theSecond : third}}" item-start alt="{{list.ranklist}}">
+      <span class='ranklist' item-start *ngIf="i>2"><span *ngIf="i<9">0</span>{{i+1}}</span>
       <div class='personal-information'>
-        <img src="{{list.portrait}}" alt="头像">
+        <img src="{{list.avatar}}" alt="头像">
         <div>
           <p>{{list.name}}</p>
-          <p>{{list.address}}</p>
+          <p>{{list.district}}</p>
         </div>
       </div>
-      <span item-end>销量</span>
+      <span item-end>{{list.turn}}单</span>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -13,8 +13,10 @@ page-information {
             span{
                 padding:rem(27);
             }
-            span:nth-child(2){
+            a{
                 color:#d2364e;
+                text-decoration: none;
+                padding-right:rem(16);
             }
         }
     }
@@ -50,5 +52,8 @@ page-information {
             text-indent:2em;
             font-size: rem(24);
         }
+    }
+    ion-slides{
+        height:auto;
     }
 }

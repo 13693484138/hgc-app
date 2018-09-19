@@ -8,111 +8,52 @@
 
   <ion-navbar>
     <ion-title>我的佣金</ion-title>
-    <a item-end>提现</a>
+    <a item-end (click)='getM()'>提现</a>
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content>
   <div class='cash-content-container'>
     <div class='cash-content-top'>
-      <span>累计提现金额:100000元</span>
+      <span>累计提现金额:{{drawDepositTotal}}元</span>
     </div>
     <div class='cash-content-bottom'>
-      <p>5200元</p>
+      <p>{{workerProfitMonth}}元</p>
       <p>本月收益(以最终结算为准)</p>
     </div>
   </div>
   <ion-grid>
     <ion-row>
       <ion-col>
-        <p>60</p>
+        <p>{{workerProfitTotal}}</p>
         <p>收益总额</p>
       </ion-col>
       <ion-col>
-        <p>1024</p>
+        <p>{{balance}}</p>
         <p>余额</p>
       </ion-col>
       <ion-col>
-        <p>2000</p>
+        <p>{{drawDepositIng}}</p>
         <p>提现中总额</p>
       </ion-col>
     </ion-row>
   </ion-grid>
   <ion-item-group>
-    <ion-item-divider color="light">5月30日</ion-item-divider>
-    <ion-item>
-      <span item-start>奖励</span>
+    <ion-item *ngFor="let money of moneylist">
+      <span item-start>{{money.source == 1 ?"佣金":"奖励"}}</span>
       <span>
-        <p class='already-paid'>+100</p>
-        <p>8-20完成10个订单</p>
+        <p [ngClass]='{"already-paid":money.status==2,"pre-income":money.status==1,"refunded":money.status==3}'>{{money.status==3?"-":"+"}}{{money.income}}</p>
+        <p>{{money.describe}}</p>
+        <p>交易时间：{{money.tradeTime}}</p>
       </span>
-      <span class='already-paid' item-end>已收益</span>
+      <span [ngClass]='{"already-paid":money.status==2,"pre-income":money.status==1,"refunded":money.status==3}' item-end>{{money.status == 1 ? "预收益" : money.status == 2 ? "已收益" : "已退款"}}</span>
     </ion-item>
-    <ion-item>
-      <span item-start>佣金</span>
-      <span>
-        <p class='pre-income'>+100</p>
-        <p>顾客：张三购买奶粉等三件商品</p>
-      </span>
-      <span class='pre-income' item-end>预收益</span>
-    </ion-item>
-    <ion-item>
-      <span item-start>佣金</span>
-      <span>
-        <p class='refunded'>+100</p>
-        <p>顾客：李四发起退货退款成功</p>
-      </span>
-      <span class='refunded' item-end>已退款</span>
-    </ion-item>
-    <ion-item>
-      <span item-start>奖励</span>
-      <span>
-        <p class='already-paid'>+100</p>
-        <p>8-20完成10个订单</p>
-      </span>
-      <span class='already-paid' item-end>已收益</span>
-    </ion-item>
-    <ion-item>
-      <span item-start>佣金</span>
-      <span>
-        <p class='pre-income'>+100</p>
-        <p>顾客：张三购买奶粉等三件商品</p>
-      </span>
-      <span class='pre-income' item-end>预收益</span>
-    </ion-item>
-    <ion-item>
-      <span item-start>佣金</span>
-      <span>
-        <p class='refunded'>+100</p>
-        <p>顾客：李四发起退货退款成功</p>
-      </span>
-      <span class='refunded' item-end>已退款</span>
-    </ion-item>
-    <ion-item>
-      <span item-start>奖励</span>
-      <span>
-        <p class='already-paid'>+100</p>
-        <p>8-20完成10个订单</p>
-      </span>
-      <span class='already-paid' item-end>已收益</span>
-    </ion-item>
-    <ion-item>
-      <span item-start>佣金</span>
-      <span>
-        <p class='pre-income'>+100</p>
-        <p>顾客：张三购买奶粉等三件商品</p>
-      </span>
-      <span class='pre-income' item-end>预收益</span>
-    </ion-item>
-    <ion-item>
-      <span item-start>佣金</span>
-      <span>
-        <p class='refunded'>+100</p>
-        <p>顾客：李四发起退货退款成功</p>
-      </span>
-      <span class='refunded' item-end>已退款</span>
-    </ion-item>
+
   </ion-item-group>
+   
+ <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf='flag != total'>
+   <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中..."></ion-infinite-scroll-content>
+ </ion-infinite-scroll>
+ <div align="center" *ngIf='flag == total'>没有更多了~~~</div>
 </ion-content>

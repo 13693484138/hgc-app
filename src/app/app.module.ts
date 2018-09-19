@@ -15,7 +15,17 @@ import { RankingListPage } from "../pages/ranking-list/ranking-list";
 import { MyCommissionPage } from "../pages/my-commission/my-commission";
 import { InvitingMembersPage } from "../pages/inviting-members/inviting-members";
 import { TeamPerformancePage } from "../pages/team-performance/team-performance";
-
+import { LoginPage } from "../pages/login/login";
+import { GetmoneyPage } from "../pages/getmoney/getmoney";
+import { NewsPage } from "../pages/news/news";
+import { HttpProvider } from '../providers/http/http';
+import { StorageServiceProvider } from '../providers/storage-service/storage-service';
+import { Network }  from '@ionic-native/network';
+import { HttpModule } from '@angular/http';
+import { MsgProvider } from '../providers/msg/msg';
+import { QRCodeModule } from 'angularx-qrcode';
+import { PhonePipe } from '../pipes/phone/phone';
+import { CallNumber } from '@ionic-native/call-number';
 @NgModule({
   declarations: [
     MyApp,
@@ -27,10 +37,17 @@ import { TeamPerformancePage } from "../pages/team-performance/team-performance"
     RankingListPage,
     MyCommissionPage,
     InvitingMembersPage,
-    TeamPerformancePage
+    TeamPerformancePage,
+    LoginPage,
+    GetmoneyPage,
+    NewsPage,
+    PhonePipe
+    
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    QRCodeModule,
     IonicModule.forRoot(MyApp, {
       iconMode: 'ios',
       mode: 'ios',  //平台样式
@@ -50,12 +67,20 @@ import { TeamPerformancePage } from "../pages/team-performance/team-performance"
     RankingListPage,
     MyCommissionPage,
     InvitingMembersPage,
-    TeamPerformancePage
+    TeamPerformancePage,
+    LoginPage,
+    GetmoneyPage,
+    NewsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HttpProvider,
+    StorageServiceProvider,
+    Network,
+    MsgProvider,
+    CallNumber
   ]
 })
 export class AppModule {}

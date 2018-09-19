@@ -21,73 +21,52 @@
     </div>
     <div class='contaier-top-content'>
       <div>
-        <p>80000元</p>
+        <p>{{teamPerformanceForMonth}}元</p>
         <p>团队本月业绩</p>
       </div>
       <div></div>
       <div>
-        <p>第二名</p>
+        <p>第{{teamLeaderboardForMonth}}名</p>
         <p>团队本月排名</p>
       </div>
     </div>
   </div>
-  <ion-list class='team-list-first'>
-    <ion-list-header>
-      团队成员
-    </ion-list-header>
-    <ion-item>
-      <img class='head' src="assets/imgs/team/head.png" item-start alt="头像">
-      <span>团队成员姓名</span>
-      <div item-end>
-        <p>800元</p>
-        <p>业绩</p>
-      </div>
-    </ion-item>
-    <ion-item>
-      <img class='head' src="assets/imgs/team/head.png" item-start alt="头像">
-      <span>团队成员姓名</span>
-      <div item-end>
-        <p>800元</p>
-        <p>业绩</p>
-      </div>
-    </ion-item>
-    <ion-item>
-      <img class='head' src="assets/imgs/team/head.png" item-start alt="头像">
-      <span>团队成员姓名</span>
-      <div item-end>
-        <p>800元</p>
-        <p>业绩</p>
-      </div>
-    </ion-item>
-    <div class='show-head-more'>显示全部</div>
-  </ion-list>
+  
   <ion-list>
     <ion-list-header>
       本月团队排行榜
     </ion-list-header>
-    <ion-item>
-      <img class='rank' src="assets/imgs/team/first.png" item-start alt="头像">
-      <span>团队成员姓名</span>
+    <ion-item *ngFor="let item of teamrank;let i=index">
+      <img class='rank' *ngIf="i<3" src="{{i == 0 ? theFirst : i == 1 ? theSecond : third}}" item-start>
+      <span class='ranklist' item-start *ngIf="i>2"><span *ngIf="i<9">0</span>{{i+1}}</span>
+      <span>{{item.nickName}}</span>
       <div item-end>
-        <p>800元</p>
-        <p>业绩</p>
+        <p class='red_zq'>{{item.total}}<span>元</span></p>
+        <p class="yj_zq">业绩</p>
       </div>
     </ion-item>
-    <ion-item>
-      <img class='rank' src="assets/imgs/team/first.png" item-start alt="头像">
-      <span>团队成员姓名</span>
-      <div item-end>
-        <p>800元</p>
-        <p>业绩</p>
-      </div>
-    </ion-item>
-    <ion-item>
-      <img class='rank' src="assets/imgs/team/first.png" item-start alt="头像">
-      <span>团队成员姓名</span>
-      <div item-end>
-        <p>800元</p>
-        <p>业绩</p>
-      </div>
-    </ion-item>
-    <div class='show-rank-more'>显示全部</div>
+    <div class='show-rank-more' (click)="showrank()">{{showph}}</div>
   </ion-list>
+  
+  <ion-list class='team-list-first'>
+    <ion-list-header>
+      团队成员
+    </ion-list-header>
+    <ion-item *ngFor="let item of team">
+    	<ion-avatar item-start>
+      <img class='head' src="{{item.avatar}}" item-start alt="头像">
+      </ion-avatar>
+      <span>{{item.nickName}}</span>
+      <div item-end>
+        <p class='red_zq'>{{item.total}}<span>元</span></p>
+        <p class='yj_zq'>业绩</p>
+      </div>
+    </ion-item>
+    <div class='show-head-more' (click)="showteam()">{{showqb}}</div>
+  </ion-list>
+  
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf='flag != total && load'>
+   <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中..."></ion-infinite-scroll-content>
+ </ion-infinite-scroll>
+ <div align="center" *ngIf='flag == total'>没有更多了~~~</div>
+ </ion-content>

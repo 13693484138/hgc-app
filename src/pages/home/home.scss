@@ -4,6 +4,7 @@ page-home {
    
   }
   .home-content-container{
+     width: 100%;
      position: absolute;
      top: rem(171);
       display: flex;
@@ -29,6 +30,7 @@ page-home {
         img {
           width: rem(90);
           height: rem(90);
+          border-radius:50%;
         }
         div {
           margin-left: rem(20);
@@ -66,7 +68,7 @@ page-home {
       .home-commission-title {
         display: flex;
         justify-content: space-between;
-        margin-top: rem(10);
+        margin-top: rem(20);
         span:nth-child(1) {
           color: #343434;
           font-size: rem(26);
@@ -86,8 +88,26 @@ page-home {
       p{
           text-align: center;
       }
+            
     }
   }
+    .divheight_zq{
+        height:1em;
+        overflow:hidden;
+        }
+    .divheight_zq div{
+        height:26px;
+        position:relative; 
+        animation: myfirst 6s infinite ;
+        }
+    @keyframes myfirst
+    {
+        0%    {top:10px;}
+        25%   {top:-10px;}
+        50%   {top:-30px;}
+        75%   {top:-50px;}
+        100%  {top:-70px;}
+    }   
   .home-notice{
     ion-card-content{
       display: flex;

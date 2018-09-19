@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { HttpProvider } from '../../providers/http/http';
+import { MsgProvider } from '../../providers/msg/msg';
 /**
  * Generated class for the RankingListPage page.
  *
@@ -15,17 +16,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class RankingListPage {
   public lists=[];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.lists = [{ name: "名字1", ranksrc: "assets/imgs/rink/theFirst.png", portrait: "assets/imgs/rink/portrait.png",address:"四川武侯区",imgshow:true,ranklist:"01"},
-      { name: "名字2", ranksrc: "assets/imgs/rink/theSecond.png", portrait: "assets/imgs/rink/portrait.png", address: "四川武侯区", imgshow: true, ranklist: "02"},
-      { name: "名字3", ranksrc: "assets/imgs/rink/third.png", portrait: "assets/imgs/rink/portrait.png", address: "四川武侯区", imgshow: true, ranklist: "03"},
-      { name: "名字4", ranksrc: "", portrait: "assets/imgs/rink/portrait.png", address: "四川武侯区", imgshow: false, ranklist: "04"},
-      { name: "名字5", ranksrc: "", portrait: "assets/imgs/rink/portrait.png", address: "四川武侯区", imgshow: false, ranklist: "05"},
-      { name: "名字6", ranksrc: "", portrait: "assets/imgs/rink/portrait.png", address: "四川武侯区", imgshow: false, ranklist: "06"}];
+  description:string;
+  theFirst:string="assets/imgs/rink/theFirst.png";
+  theSecond:string="assets/imgs/rink/theSecond.png";
+  third:string="assets/imgs/rink/third.png";
+  constructor(public navCtrl: NavController, public navParams: NavParams,public http:HttpProvider,public msg:MsgProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RankingListPage');
+    //月排行榜
+    this.http.hgcget("home/getLeaderboardInfo")
+      .subscribe(data=>{
+      	console.log(data);
+      	if(data.result == '0000'){
+      	  this.description=data.data.description;
+      	  this.lists=data.data.leaderboardInfoLsit;
+      	}else{
+          this.msg.toast(data.msg);
+      	}
+    });
   }
 
 }

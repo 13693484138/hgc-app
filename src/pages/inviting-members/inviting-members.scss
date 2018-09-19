@@ -17,5 +17,13 @@ page-inviting-members {
         height: rem(709);
         margin-top: rem(81);
         }
+        qrcode{
+            position:absolute;
+            img:nth-child(2) {
+            width: rem(246);
+            height: rem(220);
+            margin-top: rem(728);
+            }
+        }
     }
 }

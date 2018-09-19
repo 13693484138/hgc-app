@@ -9,6 +9,9 @@ page-ranking-list {
         width: 100%;
         box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
         padding-top: rem(33);
+        border-radius:0;
+        -webkit-box-shadow:none;
+        box-shadow:none;
     }
     .list-ios{
         margin: 0;
@@ -22,8 +25,14 @@ page-ranking-list {
     .list-ios .item-block .item-inner{
         border-bottom: 0
     }
+    .list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block{
+        border-bottom:none;
+    }
     .item-block {
         border-bottom: 0.55px solid #c8c7cc;
+    }
+    .text_zq{
+        text-indent: 2em;
     }
     ion-list{
         ion-item{
@@ -37,6 +46,7 @@ page-ranking-list {
                     margin-right: rem(25);
                     width: rem(81);
                     height: rem(81);
+                    border-radius:rem(12);
                 }
                 p:nth-child(1){
                     font-size: rem(32);

@@ -1,4 +1,7 @@
 page-my-commission {
+     .content-ios{
+    background-color:#eee;
+    }
     ion-navbar{
         a {
           position: absolute;
@@ -35,7 +38,11 @@ page-my-commission {
             }
         }
     }
+    ion-item-group{
+        margin-top:10px;
+    }
     ion-grid {
+      background-color:#fff ;
       ion-row {
         ion-col {
           p:nth-child(1){

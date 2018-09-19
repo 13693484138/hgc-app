@@ -7,36 +7,49 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>information</ion-title>
+    <ion-title>资讯</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-  <ion-card class='infor'>
-    <img src="assets/imgs/infor.png">
+	
+	<div *ngFor="let item of list">
+	<p class='time' *ngIf='item.type==1'>{{item.addTime}}</p>
+  <ion-card class='infor' *ngIf='item.type==1'>
+    <img src="{{imgurl+item.picture}}">
     <div>
-      <span>活动标题</span>
-      <span>点击进入详情 ></span>
+      <span>{{item.title}}</span>
+      <a href="{{item.subUrl}}">点击进入详情 &gt;</a>
     </div>
   </ion-card>
-  <p class='time'>8月15日 早上09:00</p>
-  <ion-card class='commodity'>
-    <img src="assets/imgs/commodity.png">
+  <p class='time' *ngIf='item.type==2'>{{item.addTime}}</p>
+  <ion-card class='commodity' *ngIf='item.type==2'>
+    <img src="{{imgurl+item.picture}}">
     <div>
-      <span>商品名称</span>
-      <span>商品简介</span>
+      <span>{{item.goodsInfo.title}}</span>
+      <!--<span>{{item.title}}</span>-->
+      <span>{{item.explain}}</span>
       <div>
-        <span>现价：￥188</span>
-        <del>198</del>
+        <span>现价：{{item.goodsInfo.actPrice}}</span>
+        <del>{{item.goodsInfo.salePrice}}</del>
       </div>
     </div>
-  </ion-card>
-<p class='time'>8月15日 早上09:00</p>
-<ion-card class='notice'>
-  <h2>今日任务满300单补助50元</h2>
-<p>商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商
-  品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介商品简介</p>
+  </ion-card>  
+<!--<ion-slides loop="true" autoplay="2000" *ngIf="list.length>1">
+  <ion-slide *ngFor="let item of list">
+   
+  </ion-slide>
+</ion-slides>-->
+<p class='time' *ngIf='item.type==3'>{{item.addTime}}</p>
+<ion-card class='notice' *ngIf='item.type==3'>
+  <h2>{{item.title}}</h2>
+  <p>{{item.explain}}</p>
 </ion-card>
+</div>
+<ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="currentPage-1<total">
+   <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中..."></ion-infinite-scroll-content>
+ </ion-infinite-scroll>
+ <div align="center" *ngIf='currentPage == total'>没有更多了~~~</div>
 </ion-content>

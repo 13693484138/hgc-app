@@ -1,21 +1,25 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      最新任务
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item>
+    <ion-item *ngFor="let item of list">
       <img item-start src="assets/imgs/msg.png" class='headimg'>
       <div>
-        <h2>任务</h2>
-        <img class='boximg' src="assets/imgs/misson.png" alt="图片...">
+        <h2>{{item.title}}</h2>
+        <button class='boximg' (click)="task(item.taskId)" [ngClass]="{'boximg':true,'btncolorred':item.type == 0,'btncolorgary':item.type == 1}">{{item.type == 0 ? "接任务" : "已接"}}</button>
       </div>
-      <h3>任务截止日期：后台数据</h3>
-      <p>以及撒反对建安费</p>
+      <h3>任务截止日期：{{item.overTime}}</h3>
+      <p>{{item.explain}}</p>
     </ion-item>
   </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf='flag != total'>
+   <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中..."></ion-infinite-scroll-content>
+ </ion-infinite-scroll>
+ <div align="center" *ngIf='flag == total'>没有更多了~~~</div>
 </ion-content>

@@ -1,15 +1,56 @@
 page-contact {
+    .content-ios{
+    background-color:#eee;
+    }
     ion-content{
+        .list-ios > .item-block,.list-ios .item-block .item-inner,.list-ios .item-block .item-inner{
+            border:none; 
+        }
+        .list-ios > .item-block:first-child{
+            border-top: 0.55px solid #dfdfdf;
+        }
+        .list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block{
+            border-bottom: 0.55px solid #dfdfdf;
+        }
+        .list-ios{
+            padding:0 rem(15)
+        }
+        .list-ios > .item-block{
+            margin-top:rem(10);
+            border:1px solid #dfdfdf;
+        }
         ion-list{
+            .item-ios [item-left], .item-ios [item-start]{
+                    margin: 8px 10px 8px 0;
+            }
             ion-item{
-                .boximg {
-                width: rem(146);
-                height: rem(50);
+                .btncolorred{
+                   background-color:#d2364e; 
                 }
-
+                .btncolorgary{
+                   background-color:#999999; 
+                }
+                .boximg {
+                width: rem(140);
+                height: rem(50);
+                color:#fff;
+                border-radius:rem(3);
+                font-size:rem(28);
+                }
+                h2{
+                    font-size:rem(32);
+                }
+                h3{
+                    color:#b3b3b3;
+                    font-size:rem(24);
+                }
+                p{
+                    color:#848484;
+                    font-size:rem(24);
+                }
                 .headimg {
-                width: rem(145);
-                height: rem(145);
+                width: rem(130);
+                height: rem(130);
                 }
                 div{
                     display: flex;

@@ -8,14 +8,14 @@
   <div class='home-top'>
     <div class='home-cotent'>
       <div class='home-content-left'>
-        <img src="assets/imgs/head.png" alt="头像">
+        <img src="{{avatar}}" alt="头像">
         <div>
-          <p>正生锦泰蜀汉店</p>
-          <p>良辰美景奈何天</p>
+          <p>{{shopName}}</p>
+          <p>{{name}}</p>
         </div>
       </div>
       <div class='home-content-right'>
-        <img src="assets/imgs/qrcode.png" alt="二维码">
+        <img src="assets/imgs/qrcode.png" alt="二维码" (click)="turnTo('InvitingMembersPage')">
       </div>
     </div>
   </div>
@@ -25,33 +25,36 @@
       <ion-card-header>
         <div class='home-commission-title'>
           <span>本月佣金(元)</span>
-          <span>188.8</span>
+          <span>{{monthCommission}}</span>
         </div>
       </ion-card-header>
       <ion-card-content>
         <!-- Add card content here! -->
         <div>
-          <p>50</p>
+          <p>{{balance}}</p>
           <p>钱包余额</p>
         </div>
         <div>
-          <p>60</p>
+          <p>{{expected}}</p>
           <p>预期收益</p>
         </div>
         <div>
-          <p>1024</p>
+          <p>{{customerNum}}</p>
           <p>顾客数量</p>
         </div>
         <div>
-          <p>2000</p>
+          <p>{{newCustomerNum}}</p>
           <p>新增顾客</p>
-        </div>
+        </div>   		
       </ion-card-content>
     </ion-card>
-    <ion-card class='home-notice'>
+    <ion-card *ngIf='todaytask' class='home-notice'>
       <ion-card-content>
         <!-- Add card content here! -->
-        <img src="assets/imgs/notice.png" alt="通知"> 今日任务:完成10单，补助50元
+        <img src="assets/imgs/notice.png" alt="通知">今日任务:
+        <div ngClass="divheight_zq">
+            <div class="tasklist" *ngFor="let item of todayTask">{{item.title}}</div>
+        </div>
       </ion-card-content>
     </ion-card>
     <ion-card class='home-bottom'>
@@ -80,7 +83,7 @@
           <img src="assets/imgs/rinkingList.png" alt="排行榜">
           <span>排行榜</span>
         </div>
-        <div>
+        <div (click)="turnTo('ContactPage')">
           <img src="assets/imgs/task.png" alt="最新任务">
           <span>最新任务</span>
         </div>
@@ -88,7 +91,7 @@
           <img src="assets/imgs/newspaper.png" alt="活动战报">
           <span>活动战报</span>
         </div>
-        <div>
+        <div (click)="turnTo('GetmoneyPage')">
           <img src="assets/imgs/putForward.png" alt="提现">
           <span>提现</span>
         </div>

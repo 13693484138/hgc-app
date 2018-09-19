@@ -61,7 +61,7 @@ page-team-performance {
       border-bottom: 1px solid #eee;
     }
     .team-list-first {
-      margin: 0 0 rem(30) 0;
+      margin: rem(30) 0 rem(30) 0;
     }
     ion-item{
         .head {
@@ -80,5 +80,18 @@ page-team-performance {
         align-items: center;
         justify-content: center;
         height: rem(70);
+    }
+    .red_zq{
+        color:#d2364e;
+        font-size:rem(34);
+        span{
+            font-size:rem(24);
+        }
+    }
+    .yj_zq{
+        font-size:rem(24);
+        text-align: right;
+        padding-right:1em;
+        color:#666666
     }
 }
