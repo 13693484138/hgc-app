@@ -30,8 +30,11 @@ export class TeamPerformancePage {
    theSecond:string="assets/imgs/rink/theSecond.png";
    third:string="assets/imgs/rink/third.png";
    total:number;
-   flag:number;
+   flag:number=0;
    load:boolean=false;
+   shopname:string=localStorage.getItem('shopName');
+   loader:boolean=false;
+   
   constructor(public navCtrl: NavController, public navParams: NavParams,public http:HttpProvider,public msg:MsgProvider) {
   }
 
@@ -39,7 +42,6 @@ export class TeamPerformancePage {
     //成员列表
     this.http.hgcpost("home/getTeamMemberInfo",{"currentPage":this.currentPage})
       .subscribe(data=>{
-      	console.log(data);
       	if(data.result == '0000'){
       		this.teamall=data.data.list;
       		this.team2=data.data.list.slice(0,2);
@@ -54,7 +56,6 @@ export class TeamPerformancePage {
     //成员排行列表
     this.http.hgcget("home/getTeamPerformanceInfo")
       .subscribe(data=>{
-      	console.log(data);
       	if(data.result == '0000'){
       		this.teamrankall=data.data.memberLeaderboard;
       		this.teamrank3=data.data.memberLeaderboard.slice(0,3);
@@ -67,20 +68,22 @@ export class TeamPerformancePage {
     });
   }
   doInfinite(infiniteScroll) {
-   	console.log('加载更多开始...');
+  	this.loader=true;
+   	infiniteScroll.enable(false);
     setTimeout(() => {
       this.http.hgcpost("home/getTeamMemberInfo",{"currentPage":this.currentPage})
       .subscribe(data=>{
-      	console.log(data);
       	if(data.result == '0000'){
       	  this.teamall=this.teamall.concat(data.data.list);
+      	  this.team=this.teamall;
       	  this.currentPage=data.data.nextPage;
       	  this.flag=data.data.currentPage;
+      	  infiniteScroll.enable(true);
+      	  this.loader=false;
       	}else{
           this.msg.toast(data.msg);
       	}
      });
-     console.log('加载更多结束...');
       infiniteScroll.complete();
     }, 500);
   }

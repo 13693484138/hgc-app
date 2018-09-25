@@ -10,7 +10,8 @@ export class ContactPage {
   currentPage:number=1;
   list:any=[];
   total:number;
-  flag:number;
+  flag:number=0;
+  loader:boolean=false;
   constructor(public navCtrl: NavController,public http:HttpProvider,public msg:MsgProvider) {
 
   }
@@ -22,7 +23,6 @@ export class ContactPage {
   	    //最新任务
     this.http.hgcpost("home/getTaskList",{"currentPage":this.currentPage})
       .subscribe(data=>{
-      	console.log(data);
       	if(data.result == '0000'){
       	  this.list=data.data.list;
       	  this.currentPage=data.data.nextPage;
@@ -37,9 +37,9 @@ export class ContactPage {
   	//接任务
   	this.http.hgcpost("home/acceptTask",{"taskId":item})
       .subscribe(data=>{
-      	console.log(data);
       	if(data.result == '0000'){
       		this.currentPage=1;
+      		this.msg.toast('成功!');
       	  this.data();
       	}else{
           this.msg.toast(data.msg);
@@ -48,20 +48,21 @@ export class ContactPage {
   }
   
   doInfinite(infiniteScroll) {
-   	console.log('加载更多开始...');
+  	this.loader=true;
+   	infiniteScroll.enable(false);
     setTimeout(() => {
       this.http.hgcpost("home/getTaskList",{"currentPage":this.currentPage})
       .subscribe(data=>{
-      	console.log(data);
       	if(data.result == '0000'){
       	  this.list=this.list.concat(data.data.list);
       	  this.currentPage=data.data.nextPage;
       	  this.flag=data.data.currentPage;
+      	   infiniteScroll.enable(true);
+      	  this.loader=false;
       	}else{
           this.msg.toast(data.msg);
       	}
      });
-     console.log('加载更多结束...');
       infiniteScroll.complete();
     }, 500);
   }

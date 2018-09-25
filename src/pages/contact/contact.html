@@ -18,8 +18,14 @@
       <p>{{item.explain}}</p>
     </ion-item>
   </ion-list>
+  <div class="loader" *ngIf="loader">
+			    <svg class="circular" viewBox="25 25 50 50">
+			      <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+			    </svg>
+			     <span>加载中...</span>
+	</div>
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf='flag != total'>
    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中..."></ion-infinite-scroll-content>
  </ion-infinite-scroll>
- <div align="center" *ngIf='flag == total'>没有更多了~~~</div>
+ <div class="nomore" align="center" *ngIf='flag == total'>没有更多了~~~</div>
 </ion-content>

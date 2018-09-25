@@ -21,19 +21,19 @@
     <img src="{{imgurl+item.picture}}">
     <div>
       <span>{{item.title}}</span>
-      <a href="{{item.subUrl}}">点击进入详情 &gt;</a>
+      <!--<a href="{{item.subUrl}}">点击进入详情 &gt;</a>-->
     </div>
   </ion-card>
   <p class='time' *ngIf='item.type==2'>{{item.addTime}}</p>
   <ion-card class='commodity' *ngIf='item.type==2'>
-    <img src="{{imgurl+item.picture}}">
+    <img src="{{imgurl+item.goodsInfo.attId}}">
     <div>
       <span>{{item.goodsInfo.title}}</span>
       <!--<span>{{item.title}}</span>-->
       <span>{{item.explain}}</span>
       <div>
-        <span>现价：{{item.goodsInfo.actPrice}}</span>
-        <del>{{item.goodsInfo.salePrice}}</del>
+        <span>现价：¥{{item.goodsInfo.actPrice}}&nbsp; </span>
+        <del>¥{{item.goodsInfo.salePrice}}</del>
       </div>
     </div>
   </ion-card>  
@@ -48,8 +48,14 @@
   <p>{{item.explain}}</p>
 </ion-card>
 </div>
-<ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="currentPage-1<total">
+<div class="loader" *ngIf="loader">
+			    <svg class="circular" viewBox="25 25 50 50">
+			      <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+			    </svg>
+			     <span>加载中...</span>
+	</div>
+ <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf='flag != total'>
    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中..."></ion-infinite-scroll-content>
  </ion-infinite-scroll>
- <div align="center" *ngIf='currentPage == total'>没有更多了~~~</div>
+ <div class="nomore" align="center" *ngIf='flag == total'>没有更多了~~~</div>
 </ion-content>

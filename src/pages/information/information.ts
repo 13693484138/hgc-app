@@ -19,16 +19,18 @@ export class InformationPage {
   list:any=[];
   imgurl:string=imgUrl;
   total:number;
+  flag:number=0;
+  loader:boolean=false;
   constructor(public navCtrl: NavController, public navParams: NavParams,public http:HttpProvider,public msg:MsgProvider) {
   }
 
   ionViewDidLoad() {
     this.http.hgcpost("info/getInfo",{"currentPage":this.currentPage})
       .subscribe(data=>{
-      	console.log(data);
       	if(data.result == '0000'){
       	  this.list=data.data.list;
       	  this.currentPage=data.data.nextPage;
+      	  this.flag=data.data.currentPage;
       	  this.total=data.data.total;
       	}else{
           this.msg.toast(data.msg);
@@ -37,19 +39,21 @@ export class InformationPage {
   }
   
    doInfinite(infiniteScroll) {
-   	console.log('加载更多开始...');
+   	this.loader=true;
+   	infiniteScroll.enable(false);
     setTimeout(() => {
       this.http.hgcpost("info/getInfo",{"currentPage":this.currentPage})
       .subscribe(data=>{
-      	console.log(data);
       	if(data.result == '0000'){
       	  this.list=this.list.concat(data.data.list);
       	  this.currentPage=data.data.nextPage;
+      	  this.flag=data.data.currentPage;
+      	  infiniteScroll.enable(true);
+      	  this.loader=false;
       	}else{
           this.msg.toast(data.msg);
       	}
      });
-     console.log('加载更多结束...');
       infiniteScroll.complete();
     }, 500);
   }

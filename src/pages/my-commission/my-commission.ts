@@ -15,9 +15,10 @@ import { GetmoneyPage } from '../getmoney/getmoney';
   selector: 'page-my-commission',
   templateUrl: 'my-commission.html',
 })
+
 export class MyCommissionPage {
   currentPage:number=1;
-  flag:number;
+  flag:number=0;
   moneylist:any=[];
   drawDepositTotal:number;
   workerProfitMonth:number;
@@ -25,6 +26,7 @@ export class MyCommissionPage {
   balance:number;
   drawDepositIng:number;
   total:number;
+  loader:boolean=false;
   constructor(public navCtrl: NavController, public navParams: NavParams,public http:HttpProvider,public msg:MsgProvider) {
   }
 
@@ -32,7 +34,6 @@ export class MyCommissionPage {
   	//我的佣金
   	this.http.hgcget("home/getCommissionInfo")
       .subscribe(data=>{
-      	console.log(data);
       	if(data.result == '0000'){
       	  this.drawDepositTotal=data.data.drawDepositTotal;
       	  this.workerProfitMonth=data.data.workerProfitMonth;
@@ -46,12 +47,10 @@ export class MyCommissionPage {
   	//佣金列表
     this.http.hgcpost("home/getCommissionList",{"currentPage":this.currentPage})
       .subscribe(data=>{
-      	console.log(data);
       	if(data.result == '0000'){
       		this.moneylist=data.data.list;
       		this.currentPage=data.data.nextPage;
       		this.total=data.data.total;
-      		this.pageSize=data.data.pageSize;
       		this.flag=data.data.currentPage;
       	}else{
           this.msg.toast(data.msg);
@@ -62,20 +61,21 @@ export class MyCommissionPage {
   	this.navCtrl.push(GetmoneyPage);
   }
   doInfinite(infiniteScroll) {
-   	console.log('加载更多开始...');
+  	this.loader=true;
+   	infiniteScroll.enable(false);
     setTimeout(() => {
       this.http.hgcpost("home/getCommissionList",{"currentPage":this.currentPage})
       .subscribe(data=>{
-      	console.log(data);
       	if(data.result == '0000'){
       	  this.moneylist=this.moneylist.concat(data.data.list);
       	  this.currentPage=data.data.nextPage;
       	  this.flag=data.data.currentPage;
+      	  infiniteScroll.enable(true);
+      	  this.loader=false;
       	}else{
           this.msg.toast(data.msg);
       	}
      });
-     console.log('加载更多结束...');
       infiniteScroll.complete();
     }, 500);
   }

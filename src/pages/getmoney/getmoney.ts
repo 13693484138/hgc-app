@@ -24,7 +24,6 @@ export class GetmoneyPage {
   ionViewDidLoad() {
     this.http.hgcget("home/getWorkerNameAndCash")
       .subscribe(data=>{
-      	console.log(data);
       	if(data.result == '0000'){
       	  this.money=data.data.balance;
       	  this.name=data.data.name;
@@ -37,7 +36,6 @@ export class GetmoneyPage {
   getMyMoney(){
   	this.http.hgcpost("home/withdrawalAmount",{"bankCardNumber":this.cardNum,"amount":this.getMoney})
       .subscribe(data=>{
-      	console.log(data);
       	if(data.result == '0000'){
       	  this.msg.toast(data.data);
       	}else{

@@ -36,7 +36,7 @@
   <span class="red_zq" *ngIf="getMoney<0">输入金额最小值为0</span>
 </ion-list>
 
-  <p padding>
+  <p padding >
     <button ion-button class='bcred_zq' block (click)="getMyMoney()" [disabled]="!cardNum || !getMoney || getMoney>money || getMoney<0">提现</button>
   </p>
 	</div>

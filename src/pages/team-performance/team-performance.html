@@ -16,8 +16,8 @@
 <ion-content>
   <div class='contaier-top'>
     <div class='contaier-top-title'>
-      <span>某某某某某队</span>
-      <img src="assets/imgs/team/pen.png" alt="">
+      <span>{{shopname}}</span>
+      <!--<img src="assets/imgs/team/pen.png" alt="">-->
     </div>
     <div class='contaier-top-content'>
       <div>
@@ -62,11 +62,16 @@
         <p class='yj_zq'>业绩</p>
       </div>
     </ion-item>
-    <div class='show-head-more' (click)="showteam()">{{showqb}}</div>
+    <div class='show-head-more' *ngIf='!load' (click)="showteam()">{{showqb}}</div>
   </ion-list>
-  
+  <div class="loader" *ngIf="loader">
+			    <svg class="circular" viewBox="25 25 50 50">
+			      <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+			    </svg>
+			     <span>加载中...</span>
+	</div>
   <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf='flag != total && load'>
    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="加载中..."></ion-infinite-scroll-content>
  </ion-infinite-scroll>
- <div align="center" *ngIf='flag == total'>没有更多了~~~</div>
+ <div class="nomore" align="center" *ngIf='flag == total'>没有更多了~~~</div>
  </ion-content>

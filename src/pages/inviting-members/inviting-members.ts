@@ -20,10 +20,8 @@ export class InvitingMembersPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad InvitingMembersPage');
     this.http.hgcget("home/inviteMemberQRCode")
       .subscribe(data=>{
-      	console.log(data);
       	if(data.result == '0000'){
       	 this.qrcode=data.data;
       	}else{

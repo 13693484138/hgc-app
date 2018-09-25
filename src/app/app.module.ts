@@ -18,6 +18,8 @@ import { TeamPerformancePage } from "../pages/team-performance/team-performance"
 import { LoginPage } from "../pages/login/login";
 import { GetmoneyPage } from "../pages/getmoney/getmoney";
 import { NewsPage } from "../pages/news/news";
+import { SearchcPage } from "../pages/searchc/searchc";
+
 import { HttpProvider } from '../providers/http/http';
 import { StorageServiceProvider } from '../providers/storage-service/storage-service';
 import { Network }  from '@ionic-native/network';
@@ -26,6 +28,7 @@ import { MsgProvider } from '../providers/msg/msg';
 import { QRCodeModule } from 'angularx-qrcode';
 import { PhonePipe } from '../pipes/phone/phone';
 import { CallNumber } from '@ionic-native/call-number';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -41,8 +44,8 @@ import { CallNumber } from '@ionic-native/call-number';
     LoginPage,
     GetmoneyPage,
     NewsPage,
-    PhonePipe
-    
+    PhonePipe,
+    SearchcPage  
   ],
   imports: [
     BrowserModule,
@@ -70,7 +73,8 @@ import { CallNumber } from '@ionic-native/call-number';
     TeamPerformancePage,
     LoginPage,
     GetmoneyPage,
-    NewsPage
+    NewsPage,
+    SearchcPage
   ],
   providers: [
     StatusBar,

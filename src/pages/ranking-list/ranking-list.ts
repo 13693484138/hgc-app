@@ -24,11 +24,9 @@ export class RankingListPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RankingListPage');
     //月排行榜
     this.http.hgcget("home/getLeaderboardInfo")
       .subscribe(data=>{
-      	console.log(data);
       	if(data.result == '0000'){
       	  this.description=data.data.description;
       	  this.lists=data.data.leaderboardInfoLsit;

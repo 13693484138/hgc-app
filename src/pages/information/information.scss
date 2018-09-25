@@ -38,6 +38,10 @@ page-information {
                 flex:1;
                 &>span{
                     color: #d2364e;
+                    font-size:rem(28)
+                }
+                &>del{
+                    font-size:rem(24)
                 }
             }
         }

@@ -3,6 +3,10 @@ page-home {
     background-color: #eeeeee;
    
   }
+  .logoutc{
+      color: #f5b319;
+      text-decoration: none;
+  }
   .home-content-container{
      width: 100%;
      position: absolute;
@@ -91,23 +95,26 @@ page-home {
             
     }
   }
-    .divheight_zq{
-        height:1em;
-        overflow:hidden;
-        }
-    .divheight_zq div{
-        height:26px;
-        position:relative; 
-        animation: myfirst 6s infinite ;
-        }
-    @keyframes myfirst
-    {
-        0%    {top:10px;}
-        25%   {top:-10px;}
-        50%   {top:-30px;}
-        75%   {top:-50px;}
-        100%  {top:-70px;}
-    }   
+  ul, li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width:99%;
+    overflow: hidden;/*内容超出后隐藏*/
+    text-overflow: ellipsis;/* 超出内容显示为省略号*/
+    white-space: nowrap;/*文本不进行换行*/
+}
+.scrollDiv {
+    width:rem(340);
+    height: 25px;/* 必要元素 */
+    line-height: 25px;
+    overflow: hidden;/* 必要元素 */
+}
+.scrollDiv li {
+    height: 25px;
+    padding-left: 10px;
+
+} 
   .home-notice{
     ion-card-content{
       display: flex;

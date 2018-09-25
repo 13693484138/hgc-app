@@ -2,18 +2,25 @@ page-login {
 .content{
         .log-icon-ys{
           .top-jl-ys{
-            height: rem(150);
+            height: rem(90);
           }
          img{
-           width: rem(265);
-           height: rem(305);
+//         width: rem(160);
+           height: rem(160);
            display: block;
-           margin: 0 auto;
+           margin: rem(5) auto;
          }
-          background: url("../../assets/imgs/commodity.png");
-          background-position: 0% 0%;
-          background-repeat: no-repeat;
-          background-size: 100%;
+//       .logo{
+//         height: rem(160);
+//         width:100%;
+//         display: block;
+//         margin: rem(5) auto;
+//           
+//       }
+//        background: url("../../assets/imgs/commodity.png");
+//        background-position: 0% 0%;
+//        background-repeat: no-repeat;
+//        background-size: 100%;
         }
       }
       
@@ -23,32 +30,43 @@ page-login {
         border-radius: rem(20);
         color: #ffffff;
         .label-ios-primary {
-          color:#fff;
+          color:#d2364e;
         }
+        border: 1px solid #d2364e;
+        border-radius: 36px;
+      }
+      .list-ios > .item-block:first-child{
+          border-top:1px solid #d2364e
+      }
+      .list-ios .item-block .item-inner{
+          border-bottom:none
       }
       .item-ios{
-        background: #8a8a8a;
-    
+        background: #fff;
+        color:#d2364e
       }
       .c-button {
         width:80%;
-        margin:0 auto;
-        background-color:#a3a3a3;
+        margin:rem(40) auto;
+        background-color:#d2364e;
         color:#fff;
       }
+      .button-inner{
+          color:#fff
+      }
       .list-ios {
-        margin-top:rem(73);
+        margin-top:rem(50);
         &>.item-block{
-          margin-bottom: rem(65);
-          &:first-child{
-            border-top-width:0;
-          }
-          &:last-child {
-            border-bottom-width:0;
-          }
-          .item-inner {
-            border-bottom-width:0;
-          }
+          margin-bottom: rem(30);
+//        &:first-child{
+//          border-top-width:0;
+//        }
+//        &:last-child {
+//          border-bottom-width:0;
+//        }
+//        .item-inner {
+//          border-bottom-width:0;
+//        }
         }
       }
       ion-grid.grid {

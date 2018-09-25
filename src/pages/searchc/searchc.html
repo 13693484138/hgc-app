@@ -1,0 +1,37 @@
+<!--
+  Generated template for the SearchcPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>查询</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<ion-searchbar 
+		placeholder="请输入顾客昵称" 
+		(ionInput)="data($event)"
+		(ionClear)="onCancel()"
+		>
+	</ion-searchbar>
+	<ion-list class='col_zq'>
+			  <ion-item *ngFor='let item of personlist'>
+			    <ion-avatar item-start>
+			      <img src="{{item.avatar}}">
+			    </ion-avatar>
+			    <h2>{{item.nickName}}</h2>
+			    <h3>{{item.phone|phone}}</h3>
+			    <p>
+			    	<span class='redspan' *ngFor="let label of item.describe.split(',');let i=index" [ngClass]='{"redspan":i%3==0,"greenspan":i%3==1,"organspan":i%3==2 }'>{{label}}</span>
+			    </p>
+			    <ion-icon name="call" *ngIf='item.phone' item-end (click)="call(item.phone)"></ion-icon>
+			  </ion-item>
+	</ion-list>
+
+</ion-content>

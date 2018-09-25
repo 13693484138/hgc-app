@@ -11,7 +11,7 @@
         <img src="{{avatar}}" alt="头像">
         <div>
           <p>{{shopName}}</p>
-          <p>{{name}}</p>
+          <p>{{name}} 	<a href="" (click)="logout()" class='logoutc'>切换账号</a></p>
         </div>
       </div>
       <div class='home-content-right'>
@@ -50,11 +50,12 @@
     </ion-card>
     <ion-card *ngIf='todaytask' class='home-notice'>
       <ion-card-content>
-        <!-- Add card content here! -->
         <img src="assets/imgs/notice.png" alt="通知">今日任务:
-        <div ngClass="divheight_zq">
-            <div class="tasklist" *ngFor="let item of todayTask">{{item.title}}</div>
-        </div>
+        <div class="scrollDiv" id="s1">
+				<ul class='ul_zq'>
+				<li *ngFor="let item of todayTask">{{item.title}}</li>
+				</ul>
+				</div>
       </ion-card-content>
     </ion-card>
     <ion-card class='home-bottom'>
@@ -67,7 +68,7 @@
           <img src="assets/imgs/teamPerformance.png" alt="团队业绩">
           <span>团队业绩</span>
         </div>
-        <div>
+        <div (click)="msga()">
           <img src="assets/imgs/data.png" alt="数据分析">
           <span>数据分析</span>
         </div>
@@ -75,10 +76,12 @@
           <img src="assets/imgs/vip.png" alt="邀请会员">
           <span>邀请会员</span>
         </div>
-        <div>
+        
+        <div (click)="msga()">
           <img src="assets/imgs/order.png" alt="顾客订单">
           <span>顾客订单</span>
         </div>
+        
         <div (click)="turnTo('RankingListPage')">
           <img src="assets/imgs/rinkingList.png" alt="排行榜">
           <span>排行榜</span>
@@ -87,7 +90,7 @@
           <img src="assets/imgs/task.png" alt="最新任务">
           <span>最新任务</span>
         </div>
-        <div>
+        <div (click)="msga()">
           <img src="assets/imgs/newspaper.png" alt="活动战报">
           <span>活动战报</span>
         </div>

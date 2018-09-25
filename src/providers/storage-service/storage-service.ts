@@ -18,7 +18,6 @@ export class StorageServiceProvider {
 
   read(key: string): string {
     let value: string = localStorage.getItem(key);
-
     if (value && value != "undefined" && value != "null") {
       return JSON.parse(value);
     }
